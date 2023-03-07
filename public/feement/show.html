@@ -12,7 +12,10 @@
 </head>
 
 <body>
-    <h1>show page</h1>
+    
+    
+<div id="id1">Details</div>
+    
     <div class="class5"></div>
     <script>
         const class1 = document.querySelector('.class5')
@@ -21,10 +24,19 @@
             url = "http://localhost:8080/show"
             const data = await fetch(url)
             const user = await data.json()
+            const users=JSON.stringify(user)
             console.log(user);
-            const { _id, first_name, middle_name, last_name, birthday } = user
-            console.log(_id);
-            ihtml2 = `fuck you`
+
+            // const { _id, first_name, middle_name, last_name, birthday } = user
+           
+            // ihtml2 = `show ho ja ${user}`
+            const id=document.getElementById('id1')
+            const doc=document.createElement('div')
+            doc.innerHTML=users;
+            id.appendChild(doc)
+
+            
+            
             //             ihtml = `<div class="card" style="width: 18rem;">
             //   <img src="..." class="card-img-top" alt="...">
             //   <div class="card-body">
@@ -42,7 +54,7 @@
             //     <a href="#" class="btn btn-primary">Go somewhere</a>
             //   </div>
             // </div>`
-            class1.innerHTML = ihtml2
+            // class1.innerHTML = ihtml2
         }
         fetching()
 

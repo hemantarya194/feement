@@ -1,24 +1,24 @@
 
 const Note = require('../model/data');
-// const puppeteer = require('puppeteer');
-
-// let serchName;
-// let c=document.getElementById('cse')
-// c.addEventListener('click',()=>{
-//  serchName="asu";
-    
-// })
-let  serchName;
-function cse(){
-	serchName='sandeep'
-}
 
 
+const serchName="sandeep"
+
+// function hehe()
+// {
+	
+// 	console.log("hsdgeh")
+// }
+//  hehe();
 
 const showData = async (req, res) => {
-	const mv = await Note.findOne({ first_name: serchName })
+	
+	const mv = await Note.find({ first_name: serchName })
+	
 	res.json(mv)
 
 }
+
+
 
 module.exports = { showData };
