@@ -1,11 +1,19 @@
 const mongoose = require('mongoose');
+const moment = require('moment');
 
 const moviesSchema = mongoose.Schema({
 
 	first_name: String,
 	middle_name: String,
 	last_name: String,
-	birthday: Date,
+	birthday: {
+		type: Date,
+		required: true,
+		set: function(birthday) {
+		  // Set time component to midnight (00:00:00)
+		  return moment(birthday).startOf('day').toDate();
+		}
+	  },
 	gender: String,
 	email: String,
 	phone: Number,

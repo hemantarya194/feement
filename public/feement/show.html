@@ -12,51 +12,55 @@
 </head>
 
 <body>
-    
-    
 <div id="id1">Details</div>
-    
     <div class="class5"></div>
+
+    <table id="myTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody id="myTableBody"></tbody>
+      </table>
     <script>
-        const class1 = document.querySelector('.class5')
-        const fetching = async () => {
+        // const class1 = document.querySelector('.class5')
+        // const fetching = async () => {
 
-            url = "http://localhost:8080/show"
-            const data = await fetch(url)
-            const user = await data.json()
-            const users=JSON.stringify(user)
-            console.log(user);
+        //     url = "http://localhost:8080/show"
+        //     const data = await fetch(url)
+        //     const user = await data.json()
+        //     const users=JSON.stringify(user)
+        //     console.log(user);
+        //     // const { _id, first_name, middle_name, last_name, birthday } = user
+        //     // ihtml2 = `show ho ja ${user}`
+        //     const id=document.getElementById('id1')
+        //     const doc=document.createElement('div')
+        //     doc.innerHTML=users;
+        //     id.appendChild(doc)
 
-            // const { _id, first_name, middle_name, last_name, birthday } = user
-           
-            // ihtml2 = `show ho ja ${user}`
-            const id=document.getElementById('id1')
-            const doc=document.createElement('div')
-            doc.innerHTML=users;
-            id.appendChild(doc)
+        // }
+        // fetching()
 
-            
-            
-            //             ihtml = `<div class="card" style="width: 18rem;">
-            //   <img src="..." class="card-img-top" alt="...">
-            //   <div class="card-body">
-            //     <h5 class="card-title"></h5>
-            //     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            //     <a href="#" class="btn btn-primary">Go somewhere</a>
-            //   </div>
-            // </div>`
-            //                 `<div class="card" style="width: 18rem;">
-            //   <img src="..." class="card-img-top" alt="...">
-            //   <div class="card-body">
-            //     <h5 class="card-title">${middle_name}</h5>
-            //     <h5 class="card-title">${first_name}</h5>
-            //     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            //     <a href="#" class="btn btn-primary">Go somewhere</a>
-            //   </div>
-            // </div>`
-            // class1.innerHTML = ihtml2
-        }
-        fetching()
+
+
+        fetch( "http://localhost:8080/show")
+  .then(response => response.json())
+  .then(data => {
+    const tableBody = document.querySelector('#myTableBody');
+    data.forEach(item => {
+      const row = tableBody.insertRow();
+      const nameCell = row.insertCell();
+      const emailCell = row.insertCell();
+      const ageCell = row.insertCell();
+      nameCell.innerHTML = item.first_name;
+      emailCell.innerHTML = item.email;
+      ageCell.innerHTML = item.middle_name;
+    });
+  })
+  .catch(error => console.error(error));
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
