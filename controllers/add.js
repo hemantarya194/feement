@@ -2,7 +2,7 @@
 const Note = require('../model/data');
 
 
-
+    
 const createData = async (req, res) => {
     console.log(req.body);
 
@@ -16,6 +16,7 @@ const createData = async (req, res) => {
         gender: req.body.gender,
         email: req.body.email,
         phone: req.body.phone,
+        rollno:req.body.rollno,
         semester: req.body.semester,
         branch: req.body.branch,
         subject: req.body.subject,
@@ -28,7 +29,7 @@ const createData = async (req, res) => {
     });
 
     res.statusCode=302
-    res.setHeader('location','/Batches.html')
+    res.setHeader('location','/registration_form.html')
     return res.end();
 
     res.json(newNote)

@@ -1,15 +1,7 @@
 
 const Note = require('../model/data');
 
-
-const serchName="sandeep"
-
-// function hehe()
-// {
-	
-// 	console.log("hsdgeh")
-// }
-//  hehe();
+const serchName="sonia"
 
 const showData = async (req, res) => {
 	

@@ -2,70 +2,95 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<style>
+  #myTableBody tr{
+cursor: pointer;
+  }
+</style>
 </head>
 
 <body>
-<div id="id1">Details</div>
-    <div class="class5"></div>
+  <div id="id1">Details</div>
+  <div class="class5"></div>
 
-    <table id="myTable">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Age</th>
-          </tr>
-        </thead>
-        <tbody id="myTableBody"></tbody>
-      </table>
-    <script>
-        // const class1 = document.querySelector('.class5')
-        // const fetching = async () => {
+  <table id="myTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Midnmae</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody id="myTableBody"></tbody>
+  </table>
+  <!-- <form action="profile.html"></form>
+  <button id="button" value="2" type="submit" onclick="pass();"> click</button> -->
+  <script>
 
-        //     url = "http://localhost:8080/show"
-        //     const data = await fetch(url)
-        //     const user = await data.json()
-        //     const users=JSON.stringify(user)
-        //     console.log(user);
-        //     // const { _id, first_name, middle_name, last_name, birthday } = user
-        //     // ihtml2 = `show ho ja ${user}`
-        //     const id=document.getElementById('id1')
-        //     const doc=document.createElement('div')
-        //     doc.innerHTML=users;
-        //     id.appendChild(doc)
+    
+    let  rows, Sname, Semail, Sgender, Sroll, Smobile, Sbranch, Sbirth;
+    let row;
+    let nameCell;
+    let emailCell;
+    let midNameCell;
+    let tableBody;
 
-        // }
-        // fetching()
+    fetch("http://localhost:8080/show")
+      .then(response => response.json())
+      .then(data => {
+        tableBody = document.querySelector('#myTableBody');
+        data.forEach(item => {
+          row = tableBody.insertRow();
+          nameCell = row.insertCell();
+          midNameCell = row.insertCell();
+          emailCell = row.insertCell();
+
+          nameCell.innerHTML = item.first_name
+          midNameCell.innerHTML = item.middle_name;
+          emailCell.innerHTML = item.email;
+          Sgender=item.gender;
+          Sroll=item.rollno;
+          Smobile=item.phone;
+          Sbirth=item.birthday;
+          Sbranch=item.branch;
+          
+        });
 
 
+      })
+      .catch(error => console.error(error));
 
-        fetch( "http://localhost:8080/show")
-  .then(response => response.json())
-  .then(data => {
-    const tableBody = document.querySelector('#myTableBody');
-    data.forEach(item => {
-      const row = tableBody.insertRow();
-      const nameCell = row.insertCell();
-      const emailCell = row.insertCell();
-      const ageCell = row.insertCell();
-      nameCell.innerHTML = item.first_name;
-      emailCell.innerHTML = item.email;
-      ageCell.innerHTML = item.middle_name;
-    });
-  })
-  .catch(error => console.error(error));
+      let list=document.getElementById('myTableBody')
 
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
+let dat=list.firstElementChild;
+// console.log(dat);
+list.addEventListener('click',()=>{
+   // var lol=document.getElementById('button').value;
+   rows = tableBody.rows[0];
+      Sname = rows.cells[0].textContent;
+      Semail = rows.cells[2].textContent;
+      console.log(Sname);
+      localStorage.setItem('Sname', Sname);
+      localStorage.setItem('Semail', Semail);
+      localStorage.setItem('Sgender', Sgender);
+      localStorage.setItem('Sbirth', Sbirth);
+      localStorage.setItem('Sroll', Sroll);
+      localStorage.setItem('Sbranch', Sbranch);
+      localStorage.setItem('Smobile', Smobile);
+      return false
+
+})
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
 
 </body>
 

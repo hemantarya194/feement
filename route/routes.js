@@ -10,6 +10,8 @@ router.route('/registration_form').post(createData)
 router.route('/show').get(showData);
 router.route('/Batches').post(showData);
 router.route('/login').post(loginData);
+router.route('/profile').get(showData);
+router.route('/Batches').post(showData);
 
 
 module.exports= router

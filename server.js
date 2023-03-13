@@ -9,7 +9,7 @@ const app = express();
 
 // conecting to DATABASE
 
-mongoose.connect("mongodb+srv://mithlesh:123@cluster0.tnbojkw.mongodb.net/feement?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://mithlesh:1234@cluster0.tnbojkw.mongodb.net/feement?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
     // useCreateIndex: true
