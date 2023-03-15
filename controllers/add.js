@@ -8,7 +8,6 @@ const createData = async (req, res) => {
 
     let newNote = await Note.create({
         
-
         first_name: req.body.first_name,
         middle_name: req.body.middle_name,
         last_name: req.body.last_name,

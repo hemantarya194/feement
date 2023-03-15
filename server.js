@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const route = require('./route/routes');
 const url = require('url')
 const moment = require('moment');
+const { update } = require('./controllers/update');
 
 
 const app = express();
@@ -27,6 +28,7 @@ app.use(express.static('./public/feement'))
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 app.use('/',route)
+
 
 
 app.listen(8080, function () {

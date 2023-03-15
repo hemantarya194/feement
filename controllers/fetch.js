@@ -1,11 +1,13 @@
 
 const Note = require('../model/data');
 
-const serchName="sonia"
+
 
 const showData = async (req, res) => {
-	
-	const mv = await Note.find({ first_name: serchName })
+
+	const {name}=req.params
+	console.log(name);
+	const mv = await Note.find({ branch: name })
 	
 	res.json(mv)
 

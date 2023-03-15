@@ -8,14 +8,15 @@
   <title>Show</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-<style>
-  #myTableBody tr{
-cursor: pointer;
-  }
-</style>
+  <style>
+    #myTableBody tr {
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
+  <button class="btn_fuck">fuck here</button>
   <div id="id1">Details</div>
   <div class="class5"></div>
 
@@ -31,63 +32,7 @@ cursor: pointer;
   </table>
   <!-- <form action="profile.html"></form>
   <button id="button" value="2" type="submit" onclick="pass();"> click</button> -->
-  <script>
-
-    
-    let  rows, Sname, Semail, Sgender, Sroll, Smobile, Sbranch, Sbirth;
-    let row;
-    let nameCell;
-    let emailCell;
-    let midNameCell;
-    let tableBody;
-
-    fetch("http://localhost:8080/show")
-      .then(response => response.json())
-      .then(data => {
-        tableBody = document.querySelector('#myTableBody');
-        data.forEach(item => {
-          row = tableBody.insertRow();
-          nameCell = row.insertCell();
-          midNameCell = row.insertCell();
-          emailCell = row.insertCell();
-
-          nameCell.innerHTML = item.first_name
-          midNameCell.innerHTML = item.middle_name;
-          emailCell.innerHTML = item.email;
-          Sgender=item.gender;
-          Sroll=item.rollno;
-          Smobile=item.phone;
-          Sbirth=item.birthday;
-          Sbranch=item.branch;
-          
-        });
-
-
-      })
-      .catch(error => console.error(error));
-
-      let list=document.getElementById('myTableBody')
-
-let dat=list.firstElementChild;
-// console.log(dat);
-list.addEventListener('click',()=>{
-   // var lol=document.getElementById('button').value;
-   rows = tableBody.rows[0];
-      Sname = rows.cells[0].textContent;
-      Semail = rows.cells[2].textContent;
-      console.log(Sname);
-      localStorage.setItem('Sname', Sname);
-      localStorage.setItem('Semail', Semail);
-      localStorage.setItem('Sgender', Sgender);
-      localStorage.setItem('Sbirth', Sbirth);
-      localStorage.setItem('Sroll', Sroll);
-      localStorage.setItem('Sbranch', Sbranch);
-      localStorage.setItem('Smobile', Smobile);
-      return false
-
-})
-
-  </script>
+  <script src="./js/all.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
