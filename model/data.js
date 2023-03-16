@@ -13,7 +13,7 @@ const moviesSchema = mongoose.Schema({
 	semester: String,
 	branch: String,
 	rollno:Number,
-	subject: String,
+	// subject: String,
 	amount: Number,
 	fee_type: String,
 	fee_waiver:String,
