@@ -60,6 +60,7 @@ let nameCell;
 let emailCell;
 let midNameCell;
 let tableBody;
+let i=0;
 
 const fuck_button = document.querySelector('.btn_fuck')
 if (fuck_button != undefined) {
@@ -76,7 +77,6 @@ if (fuck_button != undefined) {
                 .then(data => {
                     console.log(data);
                     tableBody = document.querySelector('#myTableBody');
-                    // tableBody=document.getElementById('myTableBody')
                     data.forEach(item => {
                         row = tableBody.insertRow();
                         nameCell = row.insertCell();
@@ -96,7 +96,7 @@ if (fuck_button != undefined) {
                         // SFW =item.fee_waiver;
                         // SFee_type=item.fee_type;
 
-                        tableBody.rows[0].setAttribute('id', '0')
+                        tableBody.rows[i].setAttribute('id', `${i}`)
 
                     });
 
