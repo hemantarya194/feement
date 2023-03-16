@@ -55,7 +55,7 @@
                                                         </div>
                                                         <hr>
                                                         <div class="row">
-                                                                <div class="col-sm-3" >
+                                                                <div class="col-sm-3">
                                                                         <h6 class="mb-0">Email</h6>
                                                                 </div>
                                                                 <div class="col-sm-9 text-secondary" id="mymail">
@@ -666,46 +666,20 @@
                 <tbody id="myTableBody"></tbody>
         </table>
         <script>
-                // fetch("http://localhost:8080/profile")
-                //         .then(response => response.json())
-                //         .then(data => {
-                //                 const tableBody = document.querySelector('#myTableBody');
-                //                 data.forEach(item => {
-                                    
-                //                         const name = document.getElementById('myname')
-                //                         name.innerHTML = item.first_name;
-                                       
-                //                         const mail = document.getElementById('mymail')
-                //                         mail.innerHTML = item.email;
-
-                //                         const gender = document.getElementById('mygender')
-                //                         gender.innerHTML = item.gender;
-                                        
-                //                 });
-                //         })
-
-                //         .catch(error => console.error(error));
-
-
-
-
-document.getElementById("myname").innerHTML=localStorage.getItem("Sname");
-document.getElementById("mymail").innerHTML=localStorage.getItem("Semail");
-document.getElementById("mybirth").innerHTML=localStorage.getItem("Sbirth");
-document.getElementById("mybranch").innerHTML=localStorage.getItem("Sgender");
-document.getElementById("mymobile").innerHTML=localStorage.getItem("Smobile");
-document.getElementById("myroll").innerHTML=localStorage.getItem("Sroll");
-document.getElementById("mybranch").innerHTML=localStorage.getItem("Sbranch");
-// document.getElementById("myFT").innerHTML=localStorage.getItem("SFee_type");
-document.getElementById("myPMSH").innerHTML=localStorage.getItem("SPMSH");
-document.getElementById("myFW").innerHTML=localStorage.getItem("SFW");
-
-
-// document.getElementById("mymail").innerHTML=localStorage.getItem("Smobile");
-// document.getElementById("mymail").innerHTML=localStorage.getItem("Sroll");
-
-
-
+                const getdata = async () => {
+                        const userId = localStorage.getItem('id')
+                        const data = await fetch(`/getuser/${userId}`)
+                        const userData = await data.json()
+                        document.getElementById("myname").innerHTML = ` ${userData.first_name} ${userData.middle_name} ${userData.last_name}`
+                        document.getElementById("mymail").innerHTML = userData.email
+                        document.getElementById("mybirth").innerHTML = userData.birthday
+                        document.getElementById("mybranch").innerHTML = userData.branch
+                        document.getElementById("mymobile").innerHTML = userData.middle_name
+                        document.getElementById("myroll").innerHTML = userData.rollno
+                        document.getElementById("myPMSH").innerHTML = userData.scholer_holder
+                        document.getElementById("myFW").innerHTML = userData.fee_waiver
+                }
+                getdata()
         </script>
 </body>
 

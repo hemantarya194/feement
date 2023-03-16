@@ -54,84 +54,35 @@ if (redirect_btn != undefined) {
 //     const data = await fetch(`/find/${string}`)
 //     console.log(await data.json())
 // }
-let rows, Sname, Semail, Sgender, Sroll, Smobile, Sbranch, Sbirth, SPMSH, SFW, SFee_type;
-let row;
-let nameCell;
-let emailCell;
-let midNameCell;
-let tableBody;
-let i=0;
 
-const fuck_button = document.querySelector('.btn_fuck')
-if (fuck_button != undefined) {
+const openuser = (id) => {
+    localStorage.setItem('id', id)
+    location.replace('./profile.html')
 
-    fuck_button.addEventListener('click', (e) => {
-        try {
-
-            const hell = localStorage.getItem('name')
-            if (!hell) {
-                throw Error(`you have been fucked up`)
-            }
-            fetch(`http://localhost:8080/Batches/${hell}`)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    tableBody = document.querySelector('#myTableBody');
-                    data.forEach(item => {
-                        row = tableBody.insertRow();
-                        nameCell = row.insertCell();
-                        midNameCell = row.insertCell();
-                        emailCell = row.insertCell();
-
-                        nameCell.innerHTML = item.first_name
-                        midNameCell.innerHTML = item.middle_name;
-                        emailCell.innerHTML = item.email;
-
-                        Sgender = item.gender;
-                        Sroll = item.rollno;
-                        Smobile = item.phone;
-                        Sbirth = item.birthday;
-                        Sbranch = item.branch;
-                        // SPMSH=item.item.scholer_holder;
-                        // SFW =item.fee_waiver;
-                        // SFee_type=item.fee_type;
-
-                        tableBody.rows[i].setAttribute('id', `${i}`)
-
-                    });
-
-
-                })
-                .catch(error => { throw Error(error) });
-        } catch (error) {
-            console.log(error);
-        }
-
-        let list = document.getElementById('0')
-
-        list.addEventListener('click', () => {
-            // var lol=document.getElementById('button').value;
-            rows = tableBody.rows[0];
-            Sname = rows.cells[0].textContent;
-            Semail = rows.cells[2].textContent;
-            console.log(Sname);
-            localStorage.setItem('Sname', Sname);
-            localStorage.setItem('Semail', Semail);
-            localStorage.setItem('Sbirth', Sbirth);
-            localStorage.setItem('Sgender', Sgender);
-            localStorage.setItem('Sroll', Sroll);
-            localStorage.setItem('Sbranch', Sbranch);
-            localStorage.setItem('Smobile', Smobile);
-            localStorage.setItem('SFee_type', SFee_type);
-            localStorage.setItem('SPMSH', SPMSH);
-            localStorage.setItem('SFW', SFW);
-
-            location.replace('./profile.html')
-            return false
-
-        })
-    })
 }
+const getallData = () => {
+    const hell = localStorage.getItem('name')
+    if (!hell) {
+        throw Error(`you have been error accur `)
+    }
+    else {
+        fetch(`http://localhost:8080/Batches/${hell}`)
+            .then(response => response.json())
+            .then(data => {
+                tableBody = document.querySelector('#myTableBody');
+                data.forEach(item => {
+                    var tr = document.createElement(`tr`)
+                    tr.setAttribute('class', item._id)
+                    tr.setAttribute('onclick', `openuser('${item._id}')`)
+                    tr.innerHTML = `<td>${item.first_name}</td><td>${item.middle_name}</td><td>${item.last_name}</td>`
+                    tableBody.append(tr)
+                });
+            })
+            .catch(error => console.log(error));
+    }
+}
+getallData()
+
 
 
 
