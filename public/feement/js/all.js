@@ -60,9 +60,10 @@ let nameCell;
 let emailCell;
 let midNameCell;
 let tableBody;
-let i=0;
+// let i=0;
 
 const fuck_button = document.querySelector('.btn_fuck')
+
 if (fuck_button != undefined) {
 
     fuck_button.addEventListener('click', (e) => {
@@ -96,10 +97,20 @@ if (fuck_button != undefined) {
                         // SFW =item.fee_waiver;
                         // SFee_type=item.fee_type;
 
-                        tableBody.rows[i].setAttribute('id', `${i}`)
 
                     });
+                    
+                       
+                        //   let rowCount = $("#myTableBody tr").length;
+                        //   alert(rowCount); 
+                        let tid=document.getElementById('myTable')
+                        let rowCount=tid.rows.length
+                        console.log(rowCount)
+                      
 
+                    for (let i = 0; i < rowCount; i++) {
+                        tableBody.rows[i].setAttribute('id', `${i}`)
+                    }
 
                 })
                 .catch(error => { throw Error(error) });
@@ -111,7 +122,10 @@ if (fuck_button != undefined) {
 
         list.addEventListener('click', () => {
             // var lol=document.getElementById('button').value;
-            rows = tableBody.rows[0];
+            for (let i = 0; i < rowCount; i++) {
+             rows = tableBody.rows[i];
+               
+            }
             Sname = rows.cells[0].textContent;
             Semail = rows.cells[2].textContent;
             console.log(Sname);
