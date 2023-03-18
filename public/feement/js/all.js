@@ -63,7 +63,7 @@ const openuser = (id) => {
 const getallData = () => {
     const hell = localStorage.getItem('name')
     if (!hell) {
-        throw Error(`you have been error accur `)
+        throw Error(`you have been error accurred`)
     }
     else {
         fetch(`http://localhost:8080/Batches/${hell}`)

@@ -1,13 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <h1>update on proccess</h1>
-    
+    <form action="post">
+        <div class="input-group">
+            <label class="label">email</label>
+            <input id="updEmail" type="text" name="email">
+        </div><br>
+        <div class="input-group">
+            <label class="label">rollno</label>
+            <input id="updRoll" type="number" name="rollno">
+        </div><br>
+        <div>
+            <button id="updBtn" type=" submit">update</button>
+        </div>
+    </form>
+    <script>
+        console.log(localStorage);
+        const upButton = document.querySelector('#updBtn')
+
+        upButton.addEventListener('click', async (e) => {
+            e.preventDefault()
+            const id = localStorage.getItem('id')
+            console.log(id);
+            const Email = document.querySelector('#updEmail').value
+            const Roll = document.querySelector('#updRoll').value
+            console.log(Email, Roll);
+            try {
+                const updatedData = await fetch(`http://localhost:8080/update/${id}`, {
+                    method: 'PATCH',
+                    body: JSON.stringify({
+                        email: Email,
+                        rollno: Roll
+                    }),
+                    headers: {
+                        'Content-type': 'application/json'
+                    }
+                })
+                if (!updatedData.ok) {
+                    throw Error('are you kidding me')
+                }
+                const data = await updatedData.json()
+                console.log(data);
+            } catch (error) {
+                console.log(error);
+            }
+
+        })
+    </script>
 </body>
+
 </html>
