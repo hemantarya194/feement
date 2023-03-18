@@ -11,20 +11,42 @@
 <body>
     <form action="post">
         <div class="input-group">
-            <label class="label">email</label>
-            <input id="updEmail" type="text" name="email">
+            <label class="label">amount</label>
+            <input id="updEmail" type="number" name="email">
         </div><br>
         <div class="input-group">
-            <label class="label">rollno</label>
-            <input id="updRoll" type="number" name="rollno">
+            <label class="label">fee_type</label>
+            <input id="updRoll" type="text" name="rollno">
         </div><br>
         <div>
-            <button id="updBtn" type=" submit">update</button>
+            <button id="updBtn" type=" submit">update sem 2</button>
+        </div>
+        <div>
+            <button id="updBtn3" type=" submit">update sem 3</button>
+        </div><div>
+            <button id="updBtn4" type=" submit">update sem 4</button>
+        </div><div>
+            <button id="updBtn5" type=" submit">update sem 5</button>
+        </div><div>
+            <button id="updBtn6" type=" submit">update sem 6</button>
+        </div><div>
+            <button id="updBtn7" type=" submit">update sem 7</button>
+        </div><div>
+            <button id="updBtn8" type=" submit">update sem 8</button>
         </div>
     </form>
+
     <script>
         console.log(localStorage);
         const upButton = document.querySelector('#updBtn')
+        const upButton3 = document.querySelector('#updBtn3')
+        const upButton4 = document.querySelector('#updBtn4')
+        const upButton5 = document.querySelector('#updBtn5')
+        const upButton6 = document.querySelector('#updBtn6')
+        const upButton7 = document.querySelector('#updBtn7')
+        const upButton8 = document.querySelector('#updBtn8')
+
+
 
         upButton.addEventListener('click', async (e) => {
             e.preventDefault()
@@ -37,8 +59,8 @@
                 const updatedData = await fetch(`http://localhost:8080/update/${id}`, {
                     method: 'PATCH',
                     body: JSON.stringify({
-                        email: Email,
-                        rollno: Roll
+                        amount2: Email,
+                        fee_type2: Roll
                     }),
                     headers: {
                         'Content-type': 'application/json'
@@ -46,14 +68,215 @@
                 })
                 if (!updatedData.ok) {
                     throw Error('are you kidding me')
+
                 }
                 const data = await updatedData.json()
                 console.log(data);
+                location.replace('./profile.html')
             } catch (error) {
                 console.log(error);
             }
 
         })
+
+        // 3sem
+
+
+        upButton3.addEventListener('click', async (e) => {
+            e.preventDefault()
+            const id = localStorage.getItem('id')
+            console.log(id);
+            const Email = document.querySelector('#updEmail').value
+            const Roll = document.querySelector('#updRoll').value
+            console.log(Email, Roll);
+            try {
+                const updatedData = await fetch(`http://localhost:8080/update/${id}`, {
+                    method: 'PATCH',
+                    body: JSON.stringify({
+                        amount3: Email,
+                        fee_type3: Roll
+                    }),
+                    headers: {
+                        'Content-type': 'application/json'
+                    }
+                })
+                if (!updatedData.ok) {
+                    throw Error('are you kidding me')
+
+                }
+                const data = await updatedData.json()
+                console.log(data);
+                location.replace('./profile.html')
+            } catch (error) {
+                console.log(error);
+            }
+        })
+
+        //4sem
+
+        upButton4.addEventListener('click', async (e) => {
+            e.preventDefault()
+            const id = localStorage.getItem('id')
+            console.log(id);
+            const Email = document.querySelector('#updEmail').value
+            const Roll = document.querySelector('#updRoll').value
+            console.log(Email, Roll);
+            try {
+                const updatedData = await fetch(`http://localhost:8080/update/${id}`, {
+                    method: 'PATCH',
+                    body: JSON.stringify({
+                        amount4: Email,
+                        fee_type4: Roll
+                    }),
+                    headers: {
+                        'Content-type': 'application/json'
+                    }
+                })
+                if (!updatedData.ok) {
+                    throw Error('are you kidding me')
+
+                }
+                const data = await updatedData.json()
+                console.log(data);
+                location.replace('./profile.html')
+            } catch (error) {
+                console.log(error);
+            }
+
+        })
+
+// 5sem
+
+upButton5.addEventListener('click', async (e) => {
+            e.preventDefault()
+            const id = localStorage.getItem('id')
+            console.log(id);
+            const Email = document.querySelector('#updEmail').value
+            const Roll = document.querySelector('#updRoll').value
+            console.log(Email, Roll);
+            try {
+                const updatedData = await fetch(`http://localhost:8080/update/${id}`, {
+                    method: 'PATCH',
+                    body: JSON.stringify({
+                        amount5: Email,
+                        fee_type5: Roll
+                    }),
+                    headers: {
+                        'Content-type': 'application/json'
+                    }
+                })
+                if (!updatedData.ok) {
+                    throw Error('are you kidding me')
+
+                }
+                const data = await updatedData.json()
+                console.log(data);
+                location.replace('./profile.html')
+            } catch (error) {
+                console.log(error);
+            }
+
+        })
+
+        // 6sem
+
+        upButton6.addEventListener('click', async (e) => {
+            e.preventDefault()
+            const id = localStorage.getItem('id')
+            console.log(id);
+            const Email = document.querySelector('#updEmail').value
+            const Roll = document.querySelector('#updRoll').value
+            console.log(Email, Roll);
+            try {
+                const updatedData = await fetch(`http://localhost:8080/update/${id}`, {
+                    method: 'PATCH',
+                    body: JSON.stringify({
+                        amount6: Email,
+                        fee_type6: Roll
+                    }),
+                    headers: {
+                        'Content-type': 'application/json'
+                    }
+                })
+                if (!updatedData.ok) {
+                    throw Error('are you kidding me')
+
+                }
+                const data = await updatedData.json()
+                console.log(data);
+                location.replace('./profile.html')
+            } catch (error) {
+                console.log(error);
+            }
+
+        })
+
+        // 7sem
+
+        upButton7.addEventListener('click', async (e) => {
+            e.preventDefault()
+            const id = localStorage.getItem('id')
+            console.log(id);
+            const Email = document.querySelector('#updEmail').value
+            const Roll = document.querySelector('#updRoll').value
+            console.log(Email, Roll);
+            try {
+                const updatedData = await fetch(`http://localhost:8080/update/${id}`, {
+                    method: 'PATCH',
+                    body: JSON.stringify({
+                        amount7: Email,
+                        fee_type7: Roll
+                    }),
+                    headers: {
+                        'Content-type': 'application/json'
+                    }
+                })
+                if (!updatedData.ok) {
+                    throw Error('are you kidding me')
+
+                }
+                const data = await updatedData.json()
+                console.log(data);
+                location.replace('./profile.html')
+            } catch (error) {
+                console.log(error);
+            }
+
+        })
+
+        // 8sem
+
+        upButton8.addEventListener('click', async (e) => {
+            e.preventDefault()
+            const id = localStorage.getItem('id')
+            console.log(id);
+            const Email = document.querySelector('#updEmail').value
+            const Roll = document.querySelector('#updRoll').value
+            console.log(Email, Roll);
+            try {
+                const updatedData = await fetch(`http://localhost:8080/update/${id}`, {
+                    method: 'PATCH',
+                    body: JSON.stringify({
+                        amount8: Email,
+                        fee_type8: Roll
+                    }),
+                    headers: {
+                        'Content-type': 'application/json'
+                    }
+                })
+                if (!updatedData.ok) {
+                    throw Error('are you kidding me')
+
+                }
+                const data = await updatedData.json()
+                console.log(data);
+                location.replace('./profile.html')
+            } catch (error) {
+                console.log(error);
+            }
+
+        })
+
     </script>
 </body>
 
